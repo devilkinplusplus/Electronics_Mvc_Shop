@@ -1,0 +1,59 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<CoreComp.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+            <h2 class="heading-section" style="color:darkcyan">All Products</h2>
+            <a href="/Product/NewProduct" class="btn btn-success">Create</a>
+        </div>
+    </div>
+    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-wrap">
+                <table class="table">
+                    <thead class="thead-primary">
+                        <tr>
+                            <th>Name</th>
+                            <th>Country</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProdName</td>
+                                <td>@item.Country.CountryName</td>
+                                <td>@item.Category.CategoryName</td>
+                                <td>@item.ProdPrice</td>
+                                <td>@item.ProdStock</td>
+
+                                <td>
+                                    @Html.ActionLink("Delete","DeleteProduct",new{id=item.ProdId},
+                                new {@class="btn btn-danger",onclick="return confirm('Are you sure ?')"})
+                                </td>
+                                <td>
+                                    <a href="/Product/UpdateProduct/@item.ProdId" class="btn btn-primary">Update</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

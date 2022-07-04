@@ -1,0 +1,44 @@
+﻿@model CoreComp.Models.Product
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>UpdateProduct</h1>
+
+<br />
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.ProdId)
+    @Html.Label("Product Name")
+    @Html.TextBoxFor(x=>x.ProdName,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ProdName,"",new{@style="color:red;"})
+    <br />
+    @Html.Label("Country")
+    @Html.DropDownListFor(x=>x.CountryId,(List<SelectListItem>)ViewBag.cntry,new{@class="form-control"})
+    <br />
+    @Html.Label("Category")
+    @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.ctgr,new{@class="form-control"})
+    <br />
+    @Html.Label("Price")
+    @Html.TextBoxFor(x=>x.ProdPrice,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ProdPrice,"",new{@style="color:red;"})
+    <br />
+    @Html.Label("Stock")
+    @Html.TextBoxFor(x=>x.ProdStock,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ProdStock,"",new{@style="color:red;"})
+    <br />
+    @Html.Label("Image")
+    @Html.TextBoxFor(x=>x.ImageUrl,new{@class="form-control"})
+    <br />
+    <button class="btn btn-info">Save</button>
+}
+<script>
+    @{
+        var messaje = TempData["ErrorMessage"];
+    }
+    var message = '@messaje';
+    if (message) {
+        swal("Try Again", message);
+    }
+</script>

@@ -1,0 +1,17 @@
+﻿@model CoreComp.Models.Category
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.CategoryId)
+    @Html.Label("Category Name")
+    @Html.TextBoxFor(x=>x.CategoryName,new{@class="form-control", autocomplete = "off"})
+    @Html.ValidationMessageFor(x=>x.CategoryName,"",new{@style="color:red"})
+    <br />
+    <button class="btn btn-info">Save</button>
+}
+

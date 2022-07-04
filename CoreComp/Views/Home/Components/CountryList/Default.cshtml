@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CoreComp.Models.Country>
+
+<div class="agile_top_brands_grids">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 top_brand_left" style="margin-bottom:50px">
+            <div class="hover14 column">
+                <div class="agile_top_brand_left_grid">
+                    <div class="agile_top_brand_left_grid1">
+                        <figure>
+                            <div class="snipcart-item block">
+                                <div class="snipcart-thumb">
+                                    <p class="text text-dark">@item.CountryName</p>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

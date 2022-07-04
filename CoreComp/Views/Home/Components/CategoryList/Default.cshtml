@@ -1,0 +1,11 @@
+﻿@model IEnumerable<CoreComp.Models.Category>
+
+<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+    <ul class="nav navbar-nav nav_1">
+        @foreach (var item in Model.Where(x => x.Status == true))
+        {
+            <li><a href="/Home/CategoryDetails/@item.CategoryId">@item.CategoryName</a></li>
+        }
+
+    </ul>
+</div>
